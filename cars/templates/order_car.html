@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% load crispy_forms_tags %}
+{% block content %}
+<div>
+    <a class="btn btn-primary" href="{% url 'edit_profile' %}">Edit Your Profile</a>
+</div>
+
+<h1>Your Orders</h1>
+
+<section class="d-flex flex-wrap justify-content-center gap-3 mt-5">
+  
+    <div class="card col-sm-3" style="width: 30rem;">
+        <img src="{{ data.image.url }}" class="card-img-top" alt="Not found">
+        <div class="card-body">
+            <h5 class="card-title"> Car Name :{{ data.name }}</h5>
+            <h5 class="card-title">Price : {{ data.price }}</h5>
+            
+            {% for cat in data.brand.all %}
+            <h5 class = "card-title">Car Brand Name :{{cat.name}}</h5>
+            {% endfor %}
+            <h5><a class="text-decoration-none" href="{% url 'detail_car' data.id %}">View Details</a></h5>     
+            
+        </div>
+    </div>
+   
+ 
+</section>
+</ul>
+{% endblock %}
